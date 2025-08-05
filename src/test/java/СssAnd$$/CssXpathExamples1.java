@@ -1,6 +1,6 @@
 package СssAnd$$;
 
-import static com.codeborne.selenide.Selectors.by;
+import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 import static org.openqa.selenium.remote.tracing.EventAttribute.setValue;
@@ -56,18 +56,67 @@ public class CssXpathExamples1 {
         // https://help.carrotquest.io/article/224 - все про css
 
         // как искать CSS локаторы
-        //‹input type="email" class="inputtext login_form_input_box" name="email" id="email" data_testid="email">
+        //1 ‹input type="email" class="inputtext login_form_input_box" name="email" id="email" data_testid="email">
         $( "[data-testid=email]"). setValue("1");
         или
         $(by("data-testid", "email")). setValue("1");
 
 
 
-        //‹input type="email" class="inputtext login_form_input_box" name="email" id="email">
+        //2 ‹input type="email" class="inputtext login_form_input_box" name="email" id="email">
         $( "[id=email]"). setValue("1");
+        или
         $( "#email").setValue("1");
+        или
         $( "input#email").setValue("1");
-        $x ( "//*@id=' email' ]"). setValue ("1") ;
+        или икспатч
+        $x ( "//*[@id='email']"). setValue ("1");
+        или
+        $x ( "//input[@id='email']"). setValue ("1");
+
+
+
+        //3 ‹input type="email" class="inputtext login_form_input_box" name="email">
+        $("[name=email]").setValue("1");
+        или
+        $(byName("email")).setValue("1");
+
+
+
+        //4 ‹input type="email" class="inputtext login_form_input_box"> тут мы берем самый уникальный класс по описанию
+        $( "[class=login_form_input_box]"). setValue("1");
+        или
+        $( ".login_form_input_box"). setValue("1");
+        или
+        $( ".inputtext.login_form_input_box"). setValue("1");
+        или
+        $( ".input.inputtext.login_form_input_box"). setValue("1");
+        или икспач
+        $x ( "//input[@class='inputtext'][@class='login_form_input_box']"). setValue ("1");
+        // .а.б так мы ищем два класса одновременно у одного элемента
+        // .а .б так мы ищем класс .а в котором еще есть класс .б
+        // например
+        //5 <div class="inputtext">
+        //       <input type="email" class="login_form_input_box">
+        // </div>
+        $( ".inputtext .login_form_input_box").setValue("1");
+        или
+        $( ".inputtext").$(".login_form_input_box").setValue("1");
+
+
+        //6 поиск по тексту
+        // <div>Hallo mom!</div>
+        $(byText("Hallo mom!")).click(); //- весь текст
+        $(withText("lo mo")).click(); // по частичному совпадению текста
+        и икспатч
+        $x ( "//div[text()='Hallo mom!']").click();
+
+
+
+
+
+
+
 
 
     }

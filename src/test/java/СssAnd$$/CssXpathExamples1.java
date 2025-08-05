@@ -54,6 +54,7 @@ public class CssXpathExamples1 {
 
 
         // https://help.carrotquest.io/article/224 - все про css
+        //https://devhints.io/xpath все про локаторыыыы !!!!!!!!!!!!!!!!!! ахуенно
 
         // как искать CSS локаторы
         //1 ‹input type="email" class="inputtext login_form_input_box" name="email" id="email" data_testid="email">

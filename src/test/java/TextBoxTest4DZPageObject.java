@@ -1,6 +1,8 @@
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import pages.RegistrationPage;
+import pages.components.CalendarComponent;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Condition.visible;
@@ -8,34 +10,29 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
-class TextBoxTest4DZ {
-
-    @BeforeAll
-    static void setting() {
-        Configuration.browserSize = "1920x1080";
-        Configuration.holdBrowserOpen = true;
-        open("https://demoqa.ru/qa-auto/forms");
-    }
-
+class TextBoxTest4DZPageObject extends TestBase {
 
     @Test
     void test4D() {
-        $("[id=firstName]").setValue("Сергей");
-        $("[id=lastName]").setValue("Гаврюшка");
-        $("#email").setValue("123S@mail.ru");
-        $("[id=gender-male]").click();
-        $("[id=mobile]").setValue("8800555353");
-        $(byText("Выберите дату")).click();
-        $(byText("6")).click();
+        reg.openPage()
+                .setfristName("Сергей")
+                .setlastName("Гаврилив")
+                .setEmail("123S@mail.ru")
+                .setGender()
+                .setPhone("9969236311")
+                .setData();
         $("[id=hobby-sports]").click();
         $("[id=picture-upload]").uploadFromClasspath("foto/Operator.png");
         $("[id=currentAddress]").setValue("Бебруашвилли дом 8");
         $("#state").setValue("Тверская обл");
         $("#city").setValue("Бурашево");
         $(byText("Отправить")).click();
-        $(".space-y-3").shouldBe(visible);
+        reg.verifyModal()
+                .verifyResult("Имя:", "Сергей Гаврилив")
+                .verifyResult("Email:", "123S@mail.ru");
     }
 }
+
 
 // File img = new File("C:/s/IDE Project/getting-started-java/src/test/resources/foto/Operator.png");
 

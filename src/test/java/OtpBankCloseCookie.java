@@ -1,10 +1,10 @@
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selectors;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.*;
-import static com.codeborne.selenide.Selectors.byTagAndText;
-import static com.codeborne.selenide.Selectors.withText;
+import static com.codeborne.selenide.Selectors.*;
 import static com.codeborne.selenide.Selenide.*;
 
 public class OtpBankCloseCookie {
@@ -32,8 +32,5 @@ public class OtpBankCloseCookie {
         $(byTagAndText("strong", "Закрыть")).click();
         $(withText("Продолжая просмотр сайта")).shouldBe(hidden);
         sleep(5000);
-
-
-
     }
 }

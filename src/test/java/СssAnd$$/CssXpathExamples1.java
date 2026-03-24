@@ -5,7 +5,7 @@ import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 import static org.openqa.selenium.remote.tracing.EventAttribute.setValue;
 
-public class CssXpathExamples1 {
+class CssXpathExamples1 {
     void cssXpathExamples() {
 
         //.hover - команда чтобы подвинуть мышку к элементу, например на подсказку
@@ -29,7 +29,6 @@ public class CssXpathExamples1 {
         // $(byTagAndText("strong", "Закрыть")) - byTagAndText - позваляет найти элемент с помощью тега и текста в этом теге в нашем случае: <strong>Закрыть</strong>
 
 
-
         //чтобы себя проверить можно искать элемент в консоли, то же самое только в начале всегда ставим $$("тут ищем элемент как в ccs")
 
 
@@ -37,25 +36,11 @@ public class CssXpathExamples1 {
         //$(".product-cell__row:not(.disebled)") - такая запись нам говорит что у класса дожен быть product-cell__row и не должно быть disebled
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         // https://help.carrotquest.io/article/224 - все про css
         //https://devhints.io/xpath все про локаторыыыы !!!!!!!!!!!!!!!!!! ахуенно
 
+
+        /*
         // как искать CSS локаторы
         //1 ‹input type="email" class="inputtext login_form_input_box" name="email" id="email" data_testid="email">
         $( "[data-testid=email]"). setValue("1");
@@ -118,7 +103,16 @@ public class CssXpathExamples1 {
 
 
 
+$("h1 div"); - ищется первый div в любом h1
+$("h1").$("div"); - ищется первый h1 и в нем первый div
 
+Пример, если откинуть тот момент, что симантически это ужасно:
+<h1>Заголовок1</h1>
+<h1><div>Заголовок2</div></h1>
+<h1><div>Заголовок3</div></h1>
 
+("h1 div"); - найдёт "Заголовок2"
+$("h1").$("div"); - ничего не найдёт
+         */
     }
 }

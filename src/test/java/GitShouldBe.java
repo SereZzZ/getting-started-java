@@ -9,6 +9,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 
 public class GitShouldBe {
+
     @Test
     void andreiShouldBe() {
         // открыть страницу

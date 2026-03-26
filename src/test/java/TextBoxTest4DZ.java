@@ -13,7 +13,7 @@ class TextBoxTest4DZ {
     @BeforeAll
     static void setting() {
         Configuration.browserSize = "1920x1080";
-        Configuration.holdBrowserOpen = true;
+        Configuration.holdBrowserOpen = false;
         open("https://demoqa.ru/qa-auto/forms");
     }
 
@@ -24,7 +24,7 @@ class TextBoxTest4DZ {
         $("[id=lastName]").setValue("Гаврюшка");
         $("#email").setValue("123S@mail.ru");
         $("[id=gender-male]").click();
-        $("[id=mobile]").setValue("8800555353");
+        $("[id=mobile]").setValue("88005553537");
         $(byText("Выберите дату")).click();
         $(byText("6")).click();
         $("[id=hobby-sports]").click();
